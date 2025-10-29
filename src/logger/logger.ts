@@ -1,4 +1,3 @@
-import app from '../app.js'
 import { createLogger , format, transports } from "winston"
 import path from 'path'
 import { fileURLToPath } from 'url'
