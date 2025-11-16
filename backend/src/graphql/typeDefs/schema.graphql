@@ -1,0 +1,208 @@
+type Query {
+  # Public queries
+  getProfil: Profil
+  getProjets(filters: ProjetFilters, first: Int, after: String): ProjetConnection!
+  getProjet(id: ID!): Projet
+  getCompetences: [Competence!]!
+  getExperiences: [Experience!]!
+  getPortfolio: Portfolio!
+}
+
+type Mutation {
+  # Auth
+  login(username: String!, password: String!): AuthPayload!
+  
+  # Profil (admin)
+  updateProfil(input: ProfilInput!): Profil!
+  
+  # Projets (admin)
+  createProjet(input: ProjetInput!): Projet!
+  updateProjet(id: ID!, input: ProjetInput!): Projet!
+  deleteProjet(id: ID!): Boolean!
+  
+  # Competences (admin)
+  createCompetence(input: CompetenceInput!): Competence!
+  updateCompetence(id: ID!, input: CompetenceInput!): Competence!
+  deleteCompetence(id: ID!): Boolean!
+  
+  # Experiences (admin)
+  createExperience(input: ExperienceInput!): Experience!
+  updateExperience(id: ID!, input: ExperienceInput!): Experience!
+  deleteExperience(id: ID!): Boolean!
+}
+
+type Profil {
+  id: ID!
+  nom: String!
+  prenom: String!
+  titre: String!
+  biographie: String!
+  email: String!
+  telephone: String
+  adresse: String
+  reseauxSociaux: ReseauxSociaux!
+  photo: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type ReseauxSociaux {
+  linkedin: String
+  github: String
+  twitter: String
+  website: String
+}
+
+type Projet {
+  id: ID!
+  titre: String!
+  description: String!
+  technologies: [String!]!
+  lienDemo: String
+  lienGithub: String
+  images: [String!]!
+  dateDebut: String!
+  dateFin: String
+  statut: StatutProjet!
+  tags: [String!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type ProjetConnection {
+  edges: [ProjetEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type ProjetEdge {
+  node: Projet!
+  cursor: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Competence {
+  id: ID!
+  nom: String!
+  niveau: NiveauCompetence!
+  categorie: CategorieCompetence!
+  icone: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Experience {
+  id: ID!
+  poste: String!
+  entreprise: String!
+  description: String!
+  dateDebut: String!
+  dateFin: String
+  enCours: Boolean!
+  competences: [String!]!
+  lieu: String
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Portfolio {
+  profil: Profil
+  projets: [Projet!]!
+  competences: [Competence!]!
+  experiences: [Experience!]!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  username: String!
+  role: String!
+}
+
+input ProfilInput {
+  nom: String
+  prenom: String
+  titre: String
+  biographie: String
+  email: String
+  telephone: String
+  adresse: String
+  reseauxSociaux: ReseauxSociauxInput
+  photo: String
+}
+
+input ReseauxSociauxInput {
+  linkedin: String
+  github: String
+  twitter: String
+  website: String
+}
+
+input ProjetInput {
+  titre: String!
+  description: String!
+  technologies: [String!]!
+  lienDemo: String
+  lienGithub: String
+  images: [String!]
+  dateDebut: String!
+  dateFin: String
+  statut: StatutProjet
+  tags: [String!]
+}
+
+input CompetenceInput {
+  nom: String!
+  niveau: NiveauCompetence!
+  categorie: CategorieCompetence!
+  icone: String
+}
+
+input ExperienceInput {
+  poste: String!
+  entreprise: String!
+  description: String!
+  dateDebut: String!
+  dateFin: String
+  enCours: Boolean
+  competences: [String!]
+  lieu: String
+}
+
+input ProjetFilters {
+  tags: [String!]
+  technologies: [String!]
+  statut: StatutProjet
+}
+
+enum StatutProjet {
+  en_cours
+  termine
+  pause
+}
+
+enum NiveauCompetence {
+  debutant
+  intermediaire
+  avance
+  expert
+}
+
+enum CategorieCompetence {
+  frontend
+  backend
+  database
+  devops
+  design
+  autre
+}

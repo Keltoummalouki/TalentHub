@@ -1,31 +1,24 @@
 {
-  "name": "talenthub",
+  "name": "talenthub-fullstack",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "Portfolio Full Stack avec GraphQL",
+  "private": true,
   "scripts": {
-    "start": "node dist/server.js",
-    "dev": "nodemon --exec tsx server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "fs": "^0.0.1-security",
-    "mongoose": "^8.19.2",
-    "morgan": "^1.10.1",
-    "nodemon": "^3.1.10",
-    "path": "^0.12.7",
-    "url": "^0.11.4",
-    "winston": "^3.18.3"
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run preview"
   },
   "devDependencies": {
-    "@types/express": "^5.0.5",
-    "@types/morgan": "^1.9.10",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
-  }
+    "concurrently": "^8.2.2"
+  },
+  "keywords": ["portfolio", "graphql", "react", "nodejs", "mongodb"],
+  "author": "",
+  "license": "ISC"
 }
