@@ -218,6 +218,68 @@ TalentHub/
 - Helmet pour les headers HTTP
 - CORS configuré
 
+## 🐳 Docker
+
+### Démarrage avec Docker
+
+```bash
+# Build et démarrer tous les services
+npm run docker:up
+
+# Voir les logs
+npm run docker:logs
+
+# Arrêter les services
+npm run docker:down
+```
+
+URLs avec Docker :
+- Frontend: http://localhost:8080
+- Backend: http://localhost:4000/graphql
+- MongoDB: localhost:27017
+
+## 🧪 Tests
+
+### Backend (Jest)
+```bash
+cd backend
+npm test                # Run tests
+npm run test:watch      # Watch mode
+npm run test:coverage   # Coverage report
+```
+
+### Frontend (Vitest)
+```bash
+cd frontend
+npm test                # Run tests
+npm run test:watch      # Watch mode
+npm run test:coverage   # Coverage report
+```
+
+### Tous les tests
+```bash
+npm run test:all
+```
+
+## 🚀 CI/CD
+
+Le projet utilise GitHub Actions pour :
+- ✅ Tests automatiques (backend + frontend)
+- ✅ Lint et audit de sécurité
+- ✅ Build Docker images
+- ✅ Déploiement automatique (main branch)
+
+### Configuration requise
+
+Ajouter ces secrets dans GitHub :
+- `DOCKER_USERNAME`: Votre username Docker Hub
+- `DOCKER_PASSWORD`: Votre token Docker Hub
+
+### Workflows
+
+- **CI/CD Pipeline** : Tests + Build + Deploy (push sur main)
+- **Tests** : Lint + Security audit (pull requests)
+
 ## 📄 Licence
 
 ISC

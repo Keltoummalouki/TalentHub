@@ -41,7 +41,7 @@ const resolvers = {
 
       const edges = nodes.map(node => ({
         node,
-        cursor: node._id.toString()
+        cursor: (node._id as any).toString()
       }));
 
       const totalCount = await Projet.countDocuments(query);
@@ -109,7 +109,7 @@ const resolvers = {
       }
 
       const token = generateToken({
-        userId: user._id.toString(),
+        userId: (user._id as any).toString(),
         username: user.username,
         role: user.role
       });

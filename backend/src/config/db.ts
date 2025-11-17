@@ -10,13 +10,13 @@ const connectDB = async () => {
             minPoolSize: 2, // nbr connexions à maintenir ouvertes
         };
 
-        const conn = await mongoose.connect(process.env.MONGO_URI, config);
+        const conn = await mongoose.connect(process.env.MONGO_URI!, config);
 
         logger.info(`MongoDB successfully connected: ${conn.connection.host}`);
         logger.info(`Database used: ${conn.connection.name}`);
         logger.info(`MongoDB Port: ${conn.connection.port}`);
     } catch (error) {
-        logger.error(`MongoDB connection error: ${error.message}`);
+        logger.error(`MongoDB connection error: ${(error as Error).message}`);
         process.exit(1)
     }
 }
