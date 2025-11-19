@@ -1,8 +1,8 @@
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster as Sonner } from "@/components/ui/sonner"; // lternative moderne aux toasts (aliasé pour éviter conflit)
+import { TooltipProvider } from "@/components/ui/tooltip"; // Context pour les tooltips shadcn/ui
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"; // ache et synchronisation des données (utilisé avec Apollo)
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // Navigation côté client (SPA routing)
 import { ApolloProvider } from "@apollo/client";
 import { client } from "@/lib/apollo-client";
 import { AuthProvider } from "@/context/AuthContext";
@@ -21,13 +21,13 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <ApolloProvider client={client}>
-    <QueryClientProvider client={queryClient}>
+  <ApolloProvider client={client}>  {/* Configuration du cache par défaut */}
+    <QueryClientProvider client={queryClient}> 
       <AuthProvider>
-        <TooltipProvider>
+        <TooltipProvider> {/** UI context pour composants */}
           <Toaster />
           <Sonner />
-          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}> {/* Gestion des routes */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
@@ -39,7 +39,6 @@ const App = () => (
           <Route path="/admin/skills" element={<ManageSkills />} />
           <Route path="/admin/experiences" element={<ManageExperiences />} />
           <Route path="/admin/profile" element={<ManageProfile />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
