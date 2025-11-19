@@ -26,11 +26,11 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gradient-subtle">
       <nav className="border-b border-border bg-background/80 backdrop-blur-lg">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h1 className="text-xl font-bold bg-primary bg-clip-text text-primary">
             Dashboard Admin
           </h1>
           <Button variant="outline" onClick={handleLogout} size="sm">
-            <LogOut size={16} className="mr-2" />
+            <LogOut size={16} className="mr-2 text-primary" />
             Déconnexion
           </Button>
         </div>
@@ -74,7 +74,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <Button 
-                className="w-full bg-gradient-primary"
+                className="w-full bg-primary"
                 onClick={() => navigate("/admin/projects")}
               >
                 Gérer les projets
@@ -91,7 +91,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <Button 
-                className="w-full bg-gradient-primary"
+                className="w-full bg-primary"
                 onClick={() => navigate("/admin/skills")}
               >
                 Gérer les compétences
@@ -108,7 +108,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <Button 
-                className="w-full bg-gradient-primary"
+                className="w-full bg-primary"
                 onClick={() => navigate("/admin/experiences")}
               >
                 Gérer les expériences
@@ -125,7 +125,7 @@ const Dashboard = () => {
             </CardHeader>
             <CardContent>
               <Button 
-                className="w-full bg-gradient-primary"
+                className="w-full bg-primary"
                 onClick={() => navigate("/admin/profile")}
               >
                 Modifier le profil

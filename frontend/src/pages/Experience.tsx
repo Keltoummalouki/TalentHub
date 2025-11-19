@@ -36,7 +36,7 @@ const Experience = () => {
           <div className="text-center mb-20 space-y-4">
             <h1 className="text-4xl md:text-6xl font-bold">
               Mon
-              <span className="bg-gradient-primary bg-clip-text text-transparent"> Parcours</span>
+              <span className="bg-gradient-primary bg-clip-text text-primary"> Parcours</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Plus de 5 années d'expérience dans le développement web, 

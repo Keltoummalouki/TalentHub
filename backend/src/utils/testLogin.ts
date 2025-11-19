@@ -26,14 +26,14 @@ const testLogin = async () => {
     const result = await response.json();
     
     if (result.data?.login) {
-      console.log('✅ Login successful!');
+      console.log('Login successful!');
       console.log('Token:', result.data.login.token.substring(0, 20) + '...');
       console.log('User:', result.data.login.user);
     } else {
-      console.log('❌ Login failed:', result.errors);
+      console.log('Login failed:', result.errors);
     }
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error('Error:', error);
   }
 };
 

@@ -36,7 +36,7 @@ const createAdmin = async () => {
     await mongoose.disconnect();
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error creating admin:', error);
+    console.error('Error creating admin:', error);
     process.exit(1);
   }
 };

@@ -5,6 +5,6 @@ import path from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const typeDefs = readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8');
+const typeDefs = readFileSync(path.join(__dirname, 'schema.graphql'), 'utf-8'); // lire le fichier GraphQL en texte
 
 export default typeDefs;
