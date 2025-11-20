@@ -1,6 +1,11 @@
 import { generateToken, verifyToken } from '../utils/jwt';
 
 describe('JWT Utils', () => {
+  beforeAll(() => {
+    process.env.JWT_SECRET = 'test-secret-key';
+    process.env.JWT_EXPIRES_IN = '7d';
+  });
+
   const payload = { userId: '123', username: 'testuser', role: 'admin' };
 
   test('should generate valid token', () => {

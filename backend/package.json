@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "dev": "nodemon --exec tsx server.ts",
     "build": "tsc",
-    "test": "jest",
+    "test": "jest --verbose --no-coverage",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "codegen": "graphql-codegen --config codegen.yml",
